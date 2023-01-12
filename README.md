@@ -10,4 +10,4 @@
 # Запустить созданый проект на телефоне, эмуляторе Android, симуляторе iOS (если работаете на Mac)
 
 ALL DONE
-![ALL DONE](./assets/1.jpg)
+![ALL DONE](./myNewProject/assets/1.jpg)
