@@ -1,7 +1,6 @@
 import * as Font from 'expo-font'
 //LOAD FONTS
 import * as SplashScreen from 'expo-splash-screen'
-import Entypo from '@expo/vector-icons/Entypo'
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync()
 //== END LOAD FONTS
@@ -25,8 +24,9 @@ import { BigButton } from '../components/BigButton/BigButton'
 
 export default function LoginScreen() {
   const [loaded, error] = Font.useFonts({
-    'Montserrat-Regulat': require('../assets/fonts/Montserrat/Montserrat-Regular.ttf'),
-    'Comfortaa-Bold': require('../assets/fonts/Comfortaa/Comfortaa-Bold.ttf'),
+    'Roboto-Regular': require('../assets/fonts/Roboto/Roboto-Regular.ttf'),
+    'Roboto-Bold': require('../assets/fonts/Roboto/Roboto-Bold.ttf'),
+    'Roboto-Medium': require('../assets/fonts/Roboto/Roboto-Medium.ttf'),
   })
   const [password, setPassword] = useState('')
   const [mail, setMail] = useState('')
@@ -46,25 +46,24 @@ export default function LoginScreen() {
     Keyboard.dismiss()
   }
   ////==FONTS
-  const [appIsReady, setAppIsReady] = useState(false)
 
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Pre-load fonts, make any API calls you need to do here
-        await Font.loadAsync(Entypo.font)
-        // Artificially delay for two seconds to simulate a slow loading
-        // experience. Please remove this if you copy and paste the code!
-        // await new Promise((resolve) => setTimeout(resolve, 2000))
-      } catch (e) {
-        console.warn(e)
-      } finally {
-        // Tell the application to render
-        setAppIsReady(true)
-      }
-    }
-    prepare()
-  }, [])
+  //   useEffect(() => {
+  //     async function prepare() {
+  //       try {
+  //         // Pre-load fonts, make any API calls you need to do here
+  //         await Font.loadAsync(Entypo.font)
+  //         // Artificially delay for two seconds to simulate a slow loading
+  //         // experience. Please remove this if you copy and paste the code!
+  //         // await new Promise((resolve) => setTimeout(resolve, 2000))
+  //       } catch (e) {
+  //         console.warn(e)
+  //       } finally {
+  //         // Tell the application to render
+  //         setAppIsReady(true)
+  //       }
+  //     }
+  //     prepare()
+  //   }, [])
 
   const onLayoutRootView = useCallback(async () => {
     if (loaded) {
@@ -217,9 +216,6 @@ const input = StyleSheet.create({
 })
 
 const title = StyleSheet.create({
-  // width: 184,
-  // height: 35,
-
   fontFamily: 'Roboto',
   fontStyle: 'normal',
   fontWeight: '500',

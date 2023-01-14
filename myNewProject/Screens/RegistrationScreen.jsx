@@ -1,7 +1,6 @@
-import * as Font from 'expo-font'
 //LOAD FONTS
+import * as Font from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
-import Entypo from '@expo/vector-icons/Entypo'
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync()
 //== END LOAD FONTS
@@ -18,15 +17,15 @@ import {
   TouchableWithoutFeedback, //close keyboard on click anywhere outside of keyboard
   Keyboard,
   Alert, // make notification
-  Button, // work as submit button
   ImageBackground, // load img as background
 } from 'react-native'
 import { BigButton } from '../components/BigButton/BigButton'
 
 export default function RegistrationScreen() {
   const [loaded, error] = Font.useFonts({
-    'Montserrat-Regulat': require('../assets/fonts/Montserrat/Montserrat-Regular.ttf'),
-    'Comfortaa-Bold': require('../assets/fonts/Comfortaa/Comfortaa-Bold.ttf'),
+    'Roboto-Regular': require('../assets/fonts/Roboto/Roboto-Regular.ttf'),
+    'Roboto-Bold': require('../assets/fonts/Roboto/Roboto-Bold.ttf'),
+    'Roboto-Medium': require('../assets/fonts/Roboto/Roboto-Medium.ttf'),
   })
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
@@ -37,6 +36,8 @@ export default function RegistrationScreen() {
   const passwordHandler = (text) => setPassword(text)
   const mailHandler = (text) => setMail(text)
   const onLogin = () => {
+    setIsOpenKeyboard(false)
+    Keyboard.dismiss()
     console.log('Credentials', { name, mail, password })
   }
   const showSecuredData = () => {
@@ -47,25 +48,23 @@ export default function RegistrationScreen() {
     Keyboard.dismiss()
   }
   ////==FONTS
-  const [appIsReady, setAppIsReady] = useState(false)
-
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Pre-load fonts, make any API calls you need to do here
-        await Font.loadAsync(Entypo.font)
-        // Artificially delay for two seconds to simulate a slow loading
-        // experience. Please remove this if you copy and paste the code!
-        // await new Promise((resolve) => setTimeout(resolve, 2000))
-      } catch (e) {
-        console.warn(e)
-      } finally {
-        // Tell the application to render
-        setAppIsReady(true)
-      }
-    }
-    prepare()
-  }, [])
+  //   useEffect(() => {
+  //     async function prepare() {
+  //       try {
+  //         // Pre-load fonts, make any API calls you need to do here
+  //         await Font.loadAsync(Entypo.font)
+  //         // Artificially delay for two seconds to simulate a slow loading
+  //         // experience. Please remove this if you copy and paste the code!
+  //         // await new Promise((resolve) => setTimeout(resolve, 2000))
+  //       } catch (e) {
+  //         console.warn(e)
+  //       } finally {
+  //         // Tell the application to render
+  //         setAppIsReady(true)
+  //       }
+  //     }
+  //     prepare()
+  //   }, [])
 
   const onLayoutRootView = useCallback(async () => {
     if (loaded) {
@@ -174,16 +173,8 @@ const wrapperReg = StyleSheet.create({
   width: '100%',
 
   paddingTop: 92,
-  // paddingBottom: 66,
   marginTop: 'auto',
-
   alignItems: 'center',
-
-  // paddingRight: 16,
-  // paddingRight: 16,
-  // maxHeight: 549,
-  // flex: 0,
-  // justifyContent: 'center',
 })
 
 const imgBox = StyleSheet.create({
@@ -212,7 +203,6 @@ const form = StyleSheet.create({
   marginBottom: 16,
 })
 const input = StyleSheet.create({
-  // width: '100%',
   input: {
     width: 343,
 
@@ -222,15 +212,12 @@ const input = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 15,
 
-    // marginHorizontal: 16,
-
     borderWidth: 1,
     borderStyle: 'solid',
     backgroundColor: '#F6F6F6',
     borderColor: '#F6F6F6',
     borderRadius: 8,
     color: '#BDBDBD',
-    // marginBottom: 16,
   },
   space: {
     marginBottom: 16,
@@ -238,9 +225,6 @@ const input = StyleSheet.create({
 })
 
 const title = StyleSheet.create({
-  // width: 184,
-  // height: 35,
-
   fontFamily: 'Roboto',
   fontStyle: 'normal',
   fontWeight: '500',
