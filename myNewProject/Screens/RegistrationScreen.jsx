@@ -102,12 +102,14 @@ export default function RegistrationScreen() {
                   onFocus={() => {
                     setIsOpenKeyboard(true)
                   }}
+                  onSubmitEditing={hideKeyBoard}
                   placeholder="Логин"
                   style={[input.input, input.space]}
                 />
                 <TextInput
                   value={mail}
                   onChangeText={mailHandler}
+                  onSubmitEditing={hideKeyBoard}
                   onFocus={() => {
                     setIsOpenKeyboard(true)
                   }}
@@ -128,6 +130,7 @@ export default function RegistrationScreen() {
                     }}
                     placeholder="Пароль"
                     secureTextEntry={isSecured}
+                    onSubmitEditing={hideKeyBoard}
                     style={input.input}
                   />
                   <Text style={label.text} onPress={showSecuredData}>

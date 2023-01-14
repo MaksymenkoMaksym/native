@@ -94,6 +94,7 @@ export default function LoginScreen() {
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
               >
                 <TextInput
+                  onSubmitEditing={hideKeyBoard}
                   value={mail}
                   onChangeText={mailHandler}
                   onFocus={() => {
@@ -110,6 +111,7 @@ export default function LoginScreen() {
                   }}
                 >
                   <TextInput
+                    onSubmitEditing={hideKeyBoard}
                     value={password}
                     onChangeText={passwordHandler}
                     onFocus={() => {
